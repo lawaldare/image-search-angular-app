@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="input-field col s12">
+      <input id="query" type="text" class="validate" [(ngModel)]="query">
+      <label for="query">Search for Images</label>
+    </div>
+  </div>
+  <button (click)="searchImages(query)" class="btn">Find Images</button>
+</div>
+
+<p *ngIf="searching" class="flow-text">Fetching data...</p>
+
+<div class="box">
+  <div class="row">
+    <div class="ui card" *ngFor="let image of images">
+      <div class="content">
+        <div class="right floated meta">14h</div>
+        <img class="ui avatar image" [src]="image.userImageURL"> {{image.user}}
+      </div>
+      <div class="image">
+        <img [src]="image.webformatURL">
+      </div>
+      <div class="content">
+        <span class="right floated">
+          <i class="heart outline like icon"></i>
+          {{image.likes}} likes
+        </span>
+        <i class="comment icon"></i>
+        {{image.comments}} comments
+      </div>
+      <div class="extra content">
+        <span class="right floated">
+          <i class="star outline icon"></i>
+          {{image.favorites}}
+        </span>
+        {{image.downloads}} downloads
+      </div>
+    </div>
+  </div>
+</div>
